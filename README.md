@@ -1,51 +1,83 @@
-# Welcome to your Expo app 👋
+# TodoApp
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple, modern cross-platform Todo / Notes app built with Expo Router and React Native + TypeScript.
 
-## Get started
+## Preview
 
-1. Install dependencies
+Simple note creation, list view, and detail pages with optional authentication (login / sign up). Works on iOS, Android and web via Expo.
 
-   ```bash
-   npm install
-   ```
+## Features
 
-2. Start the app
+- Create, view and delete notes
+- Note detail view with full content
+- Basic auth screens: Login and Sign Up
+- Theming with shared design tokens
+- Built with `expo` and `expo-router` for file-based routing
 
-   ```bash
-   npx expo start
-   ```
+## Tech stack
 
-In the output, you'll find options to open the app in a
+- Expo (React Native)
+- Expo Router (app directory routing)
+- TypeScript
+- React Context for state (`NotesContext`)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Getting started
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Prerequisites
 
-## Get a fresh project
+- Node.js (LTS recommended)
+- Yarn or npm
+- Expo CLI (optional, you can use the `npx expo` commands)
 
-When you're ready, run:
+### Install & run
 
 ```bash
-npm run reset-project
+# install deps
+npm install
+
+# start Metro / Expo DevTools
+npm run start
+
+# open on Android, iOS or web
+npm run android   # --android
+npm run ios       # --ios
+npm run web       # --web
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Project scripts
 
-## Learn more
+- `start` — run the Expo dev server
+- `android` / `ios` / `web` — start and open the respective platform
+- `reset-project` — local helper script to reset the project (see `scripts/reset-project.js`)
+- `lint` — run `expo lint`
 
-To learn more about developing your project with Expo, look at the following resources:
+## Project structure
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- `app/` — main app routes and screens
+  - `(home)/` — home routes: `index.tsx`, `create-note.tsx`, `note-detail.tsx`, `NotesContext.tsx`
+  - `auth/` — auth routes: `login.tsx`, `signUp.tsx`
+- `src/components/` — shared UI components (`Button.tsx`, `NoteCard.tsx`, `TextInput.tsx`)
+- `constants/` and `src/theme/` — theme tokens and styles
+- `assets/` — images and static assets
 
-## Join the community
+## Notes on development
 
-Join our community of developers creating universal apps.
+- The app uses file-based routing from `expo-router` — adding files under `app/` creates routes automatically.
+- `NotesContext` holds the notes state across the app; authentication screens are simple placeholders that can be wired to any auth provider.
+- Feel free to extend the data layer (e.g., add persistence with `AsyncStorage` or a backend).
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
-# todo-mobile-app
+## Contributing
+
+Contributions are welcome. Open an issue or a PR with a clear description of the change.
+
+## License
+
+This project is provided as-is. Add a license file if you plan to publish or share it broadly.
+
+---
+
+If you'd like, I can also:
+
+- Add a `CONTRIBUTING.md` guide
+- Wire up a local storage persistence example
+- Add screenshots or a demo GIF to the README
