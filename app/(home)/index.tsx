@@ -93,7 +93,7 @@ const HomeScreen: React.FC = () => {
   const filteredNotes = notes.filter(
     (note) =>
       note.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      note.description.toLowerCase().includes(searchQuery.toLowerCase())
+      note.description.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   const styles = StyleSheet.create({
@@ -222,6 +222,7 @@ const HomeScreen: React.FC = () => {
 
       {filteredNotes.length > 0 ? (
         <FlatList
+          style={{ flex: 1 }}
           data={filteredNotes}
           renderItem={({ item }) => (
             <NoteCard
@@ -240,10 +241,15 @@ const HomeScreen: React.FC = () => {
             />
           )}
           keyExtractor={(item) => item.id}
-          contentContainerStyle={styles.content}
+          contentContainerStyle={[
+            styles.content,
+            { flexGrow: 1, paddingBottom: spacing[12] },
+          ]}
           refreshControl={
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           }
+          keyboardShouldPersistTaps="handled"
+          showsVerticalScrollIndicator
           scrollEventThrottle={16}
         />
       ) : (
